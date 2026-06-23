@@ -1,3 +1,4 @@
+#Importamos los modulos necesarios
 import os
 import shutil
 import time
@@ -21,7 +22,7 @@ clasificacion = {
 #Creamos la funcion mover_archivo
 def mover_archivo(ruta_archivo_nuevo):
     nombre, extension = os.path.splitext(ruta_archivo_nuevo) #Nos separa el nombre del archivo de la extension
-    extension = extension.lower()
+    extension = extension.lower() #ponemos la extension en minusculas
 
     #Hacemos un bucle para poder revisar si las extensiones estan dentro lo previsto
     for carpeta_destino, extensiones_validas in clasificacion.items():
@@ -47,7 +48,7 @@ def mover_archivo(ruta_archivo_nuevo):
 def organizar_descargas_existentes():
     #Revisamos el directorio de 'Descargas' 
     print("🧹 Escaneando archivos antiguos en Descargas...")
-    archivos = os.listdir(ruta_descargas)
+    archivos = os.listdir(ruta_descargas)#listamos los archivos
     
     for archivo in archivos:
         ruta_archivo = os.path.join(ruta_descargas, archivo) #sacamos la ruta del archivo
@@ -83,4 +84,4 @@ if __name__ == "__main__":
         observer.stop() #paramos la vigilancia
         print("\n🛑 Vigilancia terminada.")
     
-    observer.join()#Esperamos a que el proceso en segundo plano se cierre limpiamente.
+    observer.join()#Empezamos la observacion de las descargas de los archivos
